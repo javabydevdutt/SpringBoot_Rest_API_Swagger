@@ -5,10 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -20,7 +19,7 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public Docket createDocket() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("public-api").apiInfo(apiInfo()).select()
-				.apis(RequestHandlerSelectors.basePackage("com.devdutt.swagger")).paths(PathSelectors.any()).build();
+				.apis(RequestHandlerSelectors.basePackage("com.devdutt.mapping")).paths(PathSelectors.any()).build();
 
 	}
 
@@ -30,8 +29,6 @@ public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
 				.termsOfServiceUrl("http://wwww.devdutt.blog.com").license("Devdutt License")
 				.licenseUrl("devduttjatav@gmail.com").version("1.0").build();
 		return info;
-	}
-
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// enabling swagger-ui part for visual documentation
